@@ -1,4 +1,7 @@
-# dastructs
+<p align="center">
+  <img align="center" src="assets/dastruct.png" height="250"/>
+</p>
+<h1 style="color: #112E40"align="center">Dastructs</h1>
 > A Pack of Novelty Data Structures
 
 [![version](https://img.shields.io/npm/v/dastructs.svg?style=flat-square)](http://npm.im/dastructs)
