@@ -9,7 +9,8 @@
     "build:publish": "npm run build:develop && npm run build:production",
     "build-watch": "webpack --watch src/Dastructs.js dist/dastructs.js",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "test": "nyc ava tests/*.js"
+    "test": "nyc ava tests/*.js",
+    "report": "nyc report --reporter=html"
   },
   "ava": {
     "require": "babel-register",
