@@ -3,6 +3,7 @@
 class StackNode {
   data: any;
   next: any;
+
   constructor (data: any) {
     this.data = data;
     this.next = null;
@@ -13,6 +14,9 @@ export class Stack {
   top: ?StackNode;
   next: any;
   pop: Function;
+  push: Function;
+  peek: Function;
+  isEmpty: Function;
 
   constructor () {
     this.top = null;
@@ -31,7 +35,7 @@ export class Stack {
     this.top = stackElement;
   }
 
-  peek (): ?any {
+  peek (): ?StackNode {
     if (!this.top) return null;
     return this.top.data;
   }
