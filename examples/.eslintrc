@@ -1,0 +1,23 @@
+{
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "env": {
+    "browser": true,
+    "mocha": true,
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "modules": true,
+      }
+  },
+  "rules": {
+    "strict": [2, "never"]
+  },
+  "plugins": [
+    "babel"
+  ]
+}
