@@ -9,7 +9,11 @@
     "build:publish": "npm run build:develop && npm run build:production",
     "build-watch": "webpack --watch src/Dastructs.js dist/dastructs.js",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "test": "ava tests/*.js"
+    "test": "nyc ava tests/*.js"
+  },
+  "ava": {
+    "require": "babel-register",
+    "babel": "inherit"
   },
   "repository": {
     "type": "git",
@@ -37,6 +41,7 @@
     "eslint": "3.3.1",
     "eslint-plugin-babel": "3.3.0",
     "flow-bin": "0.30.0",
+    "nyc": "8.1.0",
     "webpack": "1.13.1"
   }
 }
