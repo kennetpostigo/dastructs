@@ -1,5 +1,5 @@
 import test from 'ava';
-import { Stack } from './../dist/dastructs.js';
+import { Stack } from './../src/Stack.js';
 
 test('Stack', t => {
   var testStack = new Stack();
