@@ -1,5 +1,3 @@
-class OrderedSet {
+export class OrderedSet {
 
 }
-
-export default OrderedSet;

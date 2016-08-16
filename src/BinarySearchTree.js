@@ -1,5 +1,3 @@
-class BinarySearchTree {
+export class BinarySearchTree {
 
 }
-
-export default BinarySearchTree;

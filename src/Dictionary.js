@@ -1,5 +1,3 @@
-class Dictionary {
+export class Dictionary {
 
 }
-
-export default Dictionary;

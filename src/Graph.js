@@ -1,5 +1,3 @@
-class Graph {
+export class Graph {
 
 }
-
-export default Graph;

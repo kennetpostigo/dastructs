@@ -1,5 +1,3 @@
-class LinkedList {
+export class LinkedList {
 
 }
-
-export default LinkedList;

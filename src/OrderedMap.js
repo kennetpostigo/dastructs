@@ -1,5 +1,3 @@
-class OrderedMap {
+export class OrderedMap {
 
 }
-
-export default OrderedMap;

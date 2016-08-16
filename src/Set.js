@@ -1,5 +1,3 @@
-class Set {
+export class Set {
 
 }
-
-export default Set;

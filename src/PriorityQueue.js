@@ -1,5 +1,3 @@
-class PriorityQueue {
+export class PriorityQueue {
 
 }
-
-export default PriorityQueue;

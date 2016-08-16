@@ -1,5 +1,3 @@
-class Hash {
+export class Hash {
 
 }
-
-export default Hash;

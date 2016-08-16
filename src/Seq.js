@@ -1,5 +1,3 @@
-class Seq {
+export class Seq {
 
 }
-
-export default Seq;
