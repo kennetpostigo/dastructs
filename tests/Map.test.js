@@ -3,20 +3,24 @@ import { Map } from './../src/Map.js';
 
 test('Map', t => {
   var testMap = new Map();
-  t.is(JSON.stringify(testMap), '{"table":[]}');
+  t.is(JSON.stringify(testMap), '{"table":[],"size":0}');
 });
 
 test('Map.hashCode()', t => {
   var testMap = new Map();
   testMap.hashCode('Hello');
-  console.log(testMap.hashCode('Hello'));
   t.is(testMap.hashCode('Hello'), 4157704578);
+});
+
+test('Map.hashCode() with object', t => {
+  var testMap = new Map();
+  t.is(testMap.hashCode({hi: 'Hello'}), 563081644);
 });
 
 test('Map.clear()', t => {
   var testMap = new Map();
   testMap.clear();
-  t.is(JSON.stringify(testMap), '{"table":[]}');
+  t.is(JSON.stringify(testMap), '{"table":[],"size":0}');
 });
 
 test('Map.get()', t => {
