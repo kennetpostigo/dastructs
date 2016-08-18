@@ -2,7 +2,7 @@
 
 class StackNode {
   data: any;
-  next: any;
+  next: ?StackNode;
 
   constructor (data: any) {
     this.data = data;
@@ -12,6 +12,7 @@ class StackNode {
 
 export class Stack {
   top: ?StackNode;
+  length: number;
   next: any;
   pop: Function;
   push: Function;
@@ -19,20 +20,23 @@ export class Stack {
   isEmpty: Function;
 
   constructor () {
+    this.length = 0;
     this.top = null;
   }
 
   pop (): ?StackNode {
     if (!this.top) return null;
-    var item: any = this.top.data;
+    var temp: any = this.top.data;
     this.top = this.top.next;
-    return item;
+    this.length--;
+    return temp;
   }
 
-  push (item: StackNode): void {
-    var stackElement: StackNode = new StackNode(item);
+  push (element: StackNode): void {
+    var stackElement: StackNode = new StackNode(element);
     stackElement.next = this.top;
     this.top = stackElement;
+    this.length++;
   }
 
   peek (): ?StackNode {
@@ -41,6 +45,6 @@ export class Stack {
   }
 
   isEmpty (): boolean {
-    return this.top === null;
+    return this.length === 0;
   }
 }

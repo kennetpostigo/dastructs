@@ -2,7 +2,7 @@
 
 class QueueNode {
   data: any;
-  next: any;
+  next: ?QueueNode;
 
   constructor (data: any) {
     this.data = data;
@@ -13,33 +13,39 @@ class QueueNode {
 export class Queue {
   first: ?QueueNode;
   last: ?QueueNode;
-  add: Function;
-  remove: Function;
+  length: number;
+  enqueue: Function;
+  dequeue: Function;
   peek: Function;
   isEmpty: Function;
 
   constructor () {
+    this.length = 0;
     this.first = null,
     this.last = null
   }
 
-  add (item: QueueNode): void {
-    var queueElement: QueueNode = new QueueNode(item);
+  enqueue (element: QueueNode): void {
+    var queueElement: QueueNode = new QueueNode(element);
     if (this.last) {
       this.last.next = queueElement;
+      this.length++;
+      return;
     }
     this.last = queueElement;
+    this.length++;
     if (!this.first) {
       this.first = this.last;
     }
   }
 
-  remove (): ?QueueNode {
+  dequeue (): ?QueueNode {
     if (!this.first) return null;
-    var data = this.first.data;
+    var temp = this.first.data;
     this.first = this.first.next;
+    this.length--;
     if(!this.first) this.last = null;
-    return data;
+    return temp;
   }
 
   peek (): ?QueueNode {
@@ -48,6 +54,6 @@ export class Queue {
   }
 
   isEmpty () {
-    return this.first === null;
+    return this.length === 0;
   }
 }
