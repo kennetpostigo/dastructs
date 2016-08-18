@@ -37,5 +37,31 @@ site that contains examples and explanations.
  + BinarySearchTree
  + Graph
 
+## Contributing
+If you are willing to help make the data structures better and want to contribute
+in any way whether it be code, suggestions, or feedback I would greatly appreciate
+it.
+
+#### Prerequisites
++ You have `node v6.0.0+` and `npm v3.8.0`
+
+#### Build
+Once you clone the repository do the following:
+```bash
+# Install Development Dependencies
+npm Install
+```
+
+#### Project Scripts
+```bash
+# Run Tests
+npm test
+
+# Receive Code Coverage Reporting
+npm run report
+
+# Create Development and Production builds
+npm run build:publish
+```
 ## License
 MIT
