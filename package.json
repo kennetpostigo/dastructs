@@ -11,7 +11,8 @@
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "test": "nyc ava --verbose tests/*.js",
     "test:watch": "nyc ava --watch --verbose tests/*.js",
-    "report": "nyc report --reporter=html"
+    "report": "nyc report --reporter=html",
+    "test:report": "npm run test && npm run report"
   },
   "ava": {
     "require": "babel-register",
