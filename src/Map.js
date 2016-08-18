@@ -2,7 +2,7 @@
 
 function makeCRCTable (): number[] {
   var c;
-  var crcTable = [];
+  var crcTable: number[] = [];
   for(var n =0; n < 256; n++){
     c = n;
     for(var k =0; k < 8; k++){
@@ -15,7 +15,7 @@ function makeCRCTable (): number[] {
 
 function crc32 (str: string): number {
   var crcTable: number[] = makeCRCTable();
-  var crc = 0 ^ (-1);
+  var crc: number = 0 ^ (-1);
 
   for (var i = 0; i < str.length; i++ ) {
     crc = (crc >>> 8) ^ crcTable[(crc ^ str.charCodeAt(i)) & 0xFF];
@@ -26,6 +26,7 @@ function crc32 (str: string): number {
 
 export class Map {
   table: any[];
+  size: number;
   hashCode: Function;
   clear: Function;
   delete: Function;
@@ -35,36 +36,42 @@ export class Map {
 
   constructor () {
     this.table = [];
+    this.size = 0;
   }
 
-  hashCode (key: string): number {
-    return crc32(key);
+  hashCode (key: any): number {
+    if (typeof key === 'object') {
+      return crc32(JSON.stringify(key));
+    }
+    return crc32(key.toString());
   }
 
   clear (): void {
     this.table = [];
   }
 
-  delete (key: string): boolean {
+  delete (key: any): boolean {
     if (this.has(key)) {
       this.table[this.hashCode(key)] = undefined;
+      this.size--;
       return true;
     }
     return false;
   }
 
-  get (key: string): any {
+  get (key: any): any {
     return this.table[this.hashCode(key)] || undefined;
   }
 
-  has (key: string): boolean {
+  has (key: any): boolean {
     if (this.table[this.hashCode(key)]) return true;
     return false;
   }
 
-  set (key: string, value: any): Map {
+  set (key: any, value: any): Map {
     var index = this.hashCode(key);
     this.table[index] = value;
+    this.size++;
     return this;
   }
 }
