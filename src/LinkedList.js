@@ -88,7 +88,6 @@ export class LinkedList {
   }
 
   insert (index: number, element: Node): void {
-    console.log('INDEX: ', index);
     var current: ?Node = this.get(index);
     if (current) {
       var newNode: Node = new Node(element),
