@@ -26,14 +26,11 @@ site that contains examples and explanations.
  + Queue
  + PriorityQueue
  + LinkedList
- + DoublyLinkedList
  + Map
- + OrderedMap
  + Set
- + OrderedSet
  + Seq
  + Dictionary
- + Hash
+ + Trie
  + BinarySearchTree
  + Graph
 
@@ -57,8 +54,17 @@ npm Install
 # Run Tests
 npm test
 
+# Watch Tests
+npm run test:watch
+
 # Receive Code Coverage Reporting
 npm run report
+
+# Run Tests and get Reports
+npm run test:report
+
+# Run flow to test your typing
+npm run flow
 
 # Create Development and Production builds
 npm run build:publish
