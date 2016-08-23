@@ -98,7 +98,7 @@ export class BinarySearchTree {
   }
 
   traversePreOrder (cb : Function): void {
-    if (!cb) return;
+    if (!cb || !this.root) return;
     this.__traversePreO(this.root, cb);
   }
 
@@ -108,13 +108,69 @@ export class BinarySearchTree {
       this.__traversePO(node.left, cb);
       this.__traversePO(node.right, cb);
     }
+    return;
   }
 
-  min () {
-
+  min (): ?BSNode {
+    if (!this.root) return null;
+    return this.__minNode(this.root);
   }
 
-  max () {
+  __minNode (node: BSNode): BSNode {
+    while (node && node.left) {
+      node = node.left;
+    }
+    return node
+  }
 
+  max (): ?BSNode {
+    if (!this.root) return null;
+    return this.__maxNode(this.root);
+  }
+
+  __maxNode (node: BSNode): BSNode {
+    while (node && node.right) {
+      node = node.right;
+    }
+    return node;
+  }
+
+  remove (key: any): ?BSNode {
+    if (!key || !this.root) return null;
+    return this.__removeNode(this.root, key);
+  }
+
+  __removeNode (node: ?BSNode, key: any): ?BSNode {
+    if (!node) return null;
+
+    if (key < node.key){
+      node.left = this.__removeNode(node.left, key);
+      return node;
+    }
+
+    if (key > node.key){
+      node.right = this.__removeNode(node.right, key);
+      return node;
+    }
+
+    if (!node.left && !node.right){
+      node = null;
+      return node;
+    }
+
+    if (!node.left){
+      node = node.right;
+      return node;
+    }
+
+    if (!node.right){
+      node = node.left;
+      return node;
+    }
+
+    var replacement = this.__minNode(node.right);
+    node.key = replacement.key;
+    node.right = this.__removeNode(node.right, replacement.key);
+    return node;
   }
 }

@@ -146,7 +146,6 @@ test('BinarySearchTree.traversePreOrder()', t => {
   testBinarySearchTree.insert(8);
   testBinarySearchTree.insert(9);
   testBinarySearchTree.traversePreOrder((val) => arr.push(val));
-  console.log(JSON.stringify(testBinarySearchTree));
   t.deepEqual(arr, [5,1,2,3,4,9,8,7,6]);
 });
 
@@ -158,4 +157,81 @@ test('BinarySearchTree.traversePreOrder()', t => {
 test('BinarySearchTree.traversePreOrder() without node', t => {
   var testBinarySearchTree = new BinarySearchTree();
   t.is(testBinarySearchTree.traversePreOrder(), undefined);
+});
+
+test('BinarySearchTree.min()', t => {
+  var testBinarySearchTree = new BinarySearchTree(5);
+  testBinarySearchTree.insert(3);
+  testBinarySearchTree.insert(4);
+  testBinarySearchTree.insert(6);
+  testBinarySearchTree.insert(7);
+  t.deepEqual(testBinarySearchTree.min(), {key:3, left:null, right: {key:4,left:null,right:null}});
+});
+
+test('BinarySearchTree.min() with falsy node value', t => {
+  var testBinarySearchTree = new BinarySearchTree();
+  t.is(testBinarySearchTree.min(), null);
+});
+
+test('BinarySearchTree.max()', t => {
+  var testBinarySearchTree = new BinarySearchTree(5);
+  testBinarySearchTree.insert(3);
+  testBinarySearchTree.insert(4);
+  testBinarySearchTree.insert(6);
+  testBinarySearchTree.insert(7);
+  t.deepEqual(testBinarySearchTree.max(), {key:7, left:null, right: null});
+});
+
+test('BinarySearchTree.max()', t => {
+  var testBinarySearchTree = new BinarySearchTree();
+  t.is(testBinarySearchTree.max(), null);
+});
+
+test('BinarySearchTree.remove() with two child nodes', t => {
+  var testBinarySearchTree = new BinarySearchTree(11);
+  testBinarySearchTree.insert(7);
+  testBinarySearchTree.insert(15)
+  testBinarySearchTree.insert(3);
+  testBinarySearchTree.insert(9);
+  testBinarySearchTree.insert(8);
+  testBinarySearchTree.insert(10);
+  testBinarySearchTree.insert(13);
+  testBinarySearchTree.insert(20);
+  testBinarySearchTree.insert(18);
+  testBinarySearchTree.insert(25);
+  t.is(JSON.stringify(testBinarySearchTree.remove(15)), '{"key":11,"left":{"key":7,"left":{"key":3,"left":null,"right":null},"right":{"key":9,"left":{"key":8,"left":null,"right":null},"right":{"key":10,"left":null,"right":null}}},"right":{"key":18,"left":{"key":13,"left":null,"right":null},"right":{"key":20,"left":null,"right":{"key":25,"left":null,"right":null}}}}');
+});
+
+test('BinarySearchTree.remove() without root', t => {
+  var testBinarySearchTree = new BinarySearchTree();
+  t.is(testBinarySearchTree.remove(34), null);
+});
+
+test('BinarySearchTree.remove() with right child node', t => {
+  var testBinarySearchTree = new BinarySearchTree(11);
+  testBinarySearchTree.insert(7);
+  testBinarySearchTree.insert(15)
+  testBinarySearchTree.insert(3);
+  testBinarySearchTree.insert(9);
+  testBinarySearchTree.insert(8);
+  testBinarySearchTree.insert(10);
+  testBinarySearchTree.insert(13);
+  testBinarySearchTree.insert(20);
+  testBinarySearchTree.insert(25);
+  t.is(JSON.stringify(testBinarySearchTree.remove(15)), '{"key":11,"left":{"key":7,"left":{"key":3,"left":null,"right":null},"right":{"key":9,"left":{"key":8,"left":null,"right":null},"right":{"key":10,"left":null,"right":null}}},"right":{"key":20,"left":{"key":13,"left":null,"right":null},"right":{"key":25,"left":null,"right":null}}}');
+});
+
+test('BinarySearchTree.remove() with left child node', t => {
+  var testBinarySearchTree = new BinarySearchTree(11);
+  testBinarySearchTree.insert(7);
+  testBinarySearchTree.insert(15)
+  testBinarySearchTree.insert(3);
+  testBinarySearchTree.insert(2);
+  testBinarySearchTree.insert(9);
+  testBinarySearchTree.insert(8);
+  testBinarySearchTree.insert(10);
+  testBinarySearchTree.insert(13);
+  testBinarySearchTree.insert(20);
+  testBinarySearchTree.insert(25);
+  t.is(JSON.stringify(testBinarySearchTree.remove(3)), '{"key":11,"left":{"key":7,"left":{"key":2,"left":null,"right":null},"right":{"key":9,"left":{"key":8,"left":null,"right":null},"right":{"key":10,"left":null,"right":null}}},"right":{"key":15,"left":{"key":13,"left":null,"right":null},"right":{"key":20,"left":null,"right":{"key":25,"left":null,"right":null}}}}');
 });
