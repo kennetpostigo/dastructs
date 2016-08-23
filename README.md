@@ -4,9 +4,12 @@
 <h1 style="color: #112E40"align="center">Dastructs</h1>
 > A Pack of Novelty Data Structures
 
+[![travis build](https://img.shields.io/travis/kennetpostigo/dastructs.svg?style=flat-square)](https://travis-ci.org/kennetpostigo/dastructs)
+[![Coveralls](https://img.shields.io/coveralls/kennetpostigo/dastructs.svg?style=flat-square)](https://coveralls.io/github/kennetpostigo/dastructs?branch=master)
 [![version](https://img.shields.io/npm/v/dastructs.svg?style=flat-square)](http://npm.im/dastructs)
 [![downloads](https://img.shields.io/npm/dm/dastructs.svg?style=flat-square)](http://npm-stat.com/charts.html?package=dastructs&from=2015-08-01)
 [![MIT License](https://img.shields.io/npm/l/dastructs.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+
 
 Dastructs is a neat dependency-free library packed with novelty data structures
 and polymorphic functions that operate on them. Dastructs is short for (Da)ta
