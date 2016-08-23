@@ -26,6 +26,7 @@ function crc32 (str: string): number {
 
 export class Map {
   table: any[];
+  cache: number[];
   size: number;
   hashCode: Function;
   clear: Function;
@@ -36,18 +37,22 @@ export class Map {
 
   constructor () {
     this.table = [];
+    this.cache = [];
     this.size = 0;
   }
 
-  hashCode (key: any): number {
-    if (typeof key === 'object') {
-      return crc32(JSON.stringify(key));
+  hashCode (key: ?any): ?number {
+    if (key) {
+      if (typeof key === 'object') {
+        return crc32(JSON.stringify(key));
+      }
+      return crc32(key.toString());
     }
-    return crc32(key.toString());
   }
 
   clear (): void {
     this.table = [];
+    this.cache = [];
   }
 
   delete (key: any): boolean {
@@ -57,6 +62,32 @@ export class Map {
       return true;
     }
     return false;
+  }
+
+  keys (): number[] {
+    var copy: number[] = this.cache.splice(0);
+    return copy.filter((item) => {
+      if (this.table[item]) {
+        return true;
+      } else {
+        var index = this.cache.indexOf(item);
+        this.cache.splice(index, 1);
+        return false;
+      }
+    }).map(item => item);
+  }
+
+  values (): any {
+    var copy: number[] = this.cache.splice(0);
+    return copy.filter((item) => {
+      if (this.table[item]) {
+        return true;
+      } else {
+        var index = this.cache.indexOf(item);
+        this.cache.splice(index, 1);
+        return false;
+      }
+    }).map(item => this.table[item]);
   }
 
   get (key: any): any {
@@ -69,8 +100,12 @@ export class Map {
   }
 
   set (key: any, value: any): Map {
-    var index = this.hashCode(key);
-    this.table[index] = value;
+    if (this.has(key)) {
+      this.table[this.hashCode(key)] = value;
+      return this;
+    }
+    this.table[this.hashCode(key)] = value;
+    this.cache.push(this.hashCode(key));
     this.size++;
     return this;
   }

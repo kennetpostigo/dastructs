@@ -63,7 +63,8 @@ export class LinkedList {
       this.tail = null;
       this.length--;
       return temp;
-    } else if (this.tail) {
+    }
+    if (this.tail) {
       let temp = this.tail;
       this.tail = this.tail.prev;
       this.length--;
