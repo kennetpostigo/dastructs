@@ -3,7 +3,7 @@ import { Map } from './../src/Map.js';
 
 test('Map', t => {
   var testMap = new Map();
-  t.is(JSON.stringify(testMap), '{"table":[],"size":0}');
+  t.is(JSON.stringify(testMap), '{"table":[],"cache":[],"size":0}');
 });
 
 test('Map.hashCode()', t => {
@@ -20,7 +20,7 @@ test('Map.hashCode() with object', t => {
 test('Map.clear()', t => {
   var testMap = new Map();
   testMap.clear();
-  t.is(JSON.stringify(testMap), '{"table":[],"size":0}');
+  t.is(JSON.stringify(testMap), '{"table":[],"cache":[],"size":0}');
 });
 
 test('Map.get()', t => {
@@ -53,6 +53,13 @@ test('Map.set()', t => {
   t.is(testMap.get('keyOne'), 1);
 });
 
+test('Map.set() with double', t => {
+  var testMap = new Map();
+  testMap.set('keyOne', 1);
+  testMap.set('keyOne', 2);
+  t.is(testMap.size, 1);
+});
+
 test('Map.delete()', t => {
   var testMap = new Map();
   testMap.set('keyOne', 1);
@@ -62,4 +69,42 @@ test('Map.delete()', t => {
 test('Map.delete() without existing key', t => {
   var testMap = new Map();
   t.is(testMap.delete('keyOne'), false);
+});
+
+test('Map.values()', t => {
+  var testMap = new Map();
+  testMap.set('keyOne', 1);
+  testMap.set('keyTwo', 2);
+  testMap.set('keyThree', 3);
+  testMap.set('keyFour', 4);
+  t.deepEqual(testMap.values(), [1,2,3,4]);
+});
+
+test('Map.values() with deleted key', t => {
+  var testMap = new Map();
+  testMap.set('keyOne', 1);
+  testMap.set('keyTwo', 2);
+  testMap.set('keyThree', 3);
+  testMap.set('keyFour', 4);
+  testMap.delete('keyOne');
+  t.deepEqual(testMap.values(), [2,3,4]);
+});
+
+test('Map.keys()', t => {
+  var testMap = new Map();
+  testMap.set('keyOne', 1);
+  testMap.set('keyTwo', 2);
+  testMap.set('keyThree', 3);
+  testMap.set('keyFour', 4);
+  t.deepEqual(testMap.keys(), [695488530,1121082501,1546017827,2844904809]);
+});
+
+test('Map.keys() with deleted key', t => {
+  var testMap = new Map();
+  testMap.set('keyOne', 1);
+  testMap.set('keyTwo', 2);
+  testMap.set('keyThree', 3);
+  testMap.set('keyFour', 4);
+  testMap.delete('keyOne');
+  t.deepEqual(testMap.keys(), [1121082501,1546017827,2844904809]);
 });
