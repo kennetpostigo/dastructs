@@ -15,7 +15,7 @@ class Node {
 export class LinkedList {
   head: ?Node;
   tail: ?Node;
-  length: number;
+  size: number;
   push: Function;
   pop: Function;
   insert: Function;
@@ -24,7 +24,7 @@ export class LinkedList {
   isEmpty: Function;
 
   constructor () {
-    this.length = 0;
+    this.size = 0;
     this.head = null;
     this.tail = null;
   }
@@ -39,7 +39,7 @@ export class LinkedList {
       newNode.prev = this.tail;
       this.tail = newNode;
     }
-    this.length++;
+    this.size++;
   }
 
   unshift (element: Node): void {
@@ -52,38 +52,38 @@ export class LinkedList {
       newNode.next = this.head;
       this.head = newNode;
     }
-    this.length++;
+    this.size++;
   }
 
   pop (): ?Node {
-    if (this.length === 0) return null;
-    if (this.length === 1) {
+    if (this.size === 0) return null;
+    if (this.size === 1) {
       let temp = this.tail;
       this.head = null;
       this.tail = null;
-      this.length--;
+      this.size--;
       return temp;
     }
     if (this.tail) {
       let temp = this.tail;
       this.tail = this.tail.prev;
-      this.length--;
+      this.size--;
       return temp;
     }
   }
 
   shift (): ?Node {
-    if (this.length === 0) return null;
-    if (this.length === 1) {
+    if (this.size === 0) return null;
+    if (this.size === 1) {
       let temp = this.head;
       this.head = null;
       this.tail = null;
-      this.length--;
+      this.size--;
       return temp;
     } else if (this.head) {
       let temp = this.head;
       this.head = this.head.next;
-      this.length--;
+      this.size--;
       return temp;
     }
   }
@@ -98,13 +98,13 @@ export class LinkedList {
         newNode.prev = previous;
         newNode.next = current;
         current.prev = newNode;
-        this.length++;
+        this.size++;
       }
     }
   }
 
   get(index: number): ?Node {
-    if (index > 0 && index <= this.length) {
+    if (index > 0 && index <= this.size) {
       if (this.head) {
         var current: Node = this.head,
             previous: ?Node,
@@ -131,7 +131,7 @@ export class LinkedList {
       if (previous && next) {
         previous.next = next;
         next.prev = previous;
-        this.length++;
+        this.size++;
       }
     }
     return null;
@@ -140,12 +140,12 @@ export class LinkedList {
   indexOf (value: any): ?number {
     var found: boolean = false,
         index: number = 1;
-    if (this.length === 0) return null;
+    if (this.size === 0) return null;
     if (this.head) {
       var current: Node = this.head,
           previous: ?Node;
       while (found === false) {
-        if (index > this.length) {
+        if (index > this.size) {
           return null;
         }
         if (current.data === value) {
@@ -160,6 +160,6 @@ export class LinkedList {
   }
 
   isEmpty (): boolean {
-    return this.length === 0;
+    return this.size === 0;
   }
 }
