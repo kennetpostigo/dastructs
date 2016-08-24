@@ -3,7 +3,7 @@ import { LinkedList } from './../src/LinkedList.js';
 
 test('LinkedList', t => {
   var testLinkedList = new LinkedList();
-  t.is(JSON.stringify(testLinkedList), '{"length":0,"head":null,"tail":null}');
+  t.is(JSON.stringify(testLinkedList), '{"size":0,"head":null,"tail":null}');
 });
 
 test('LinkedList.push()', t => {

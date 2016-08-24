@@ -3,27 +3,27 @@ import { Queue } from './../src/Queue.js';
 
 test('Queue', t => {
   var testQueue = new Queue();
-  t.is(JSON.stringify(testQueue), '{"length":0,"first":null,"last":null}')
+  t.is(JSON.stringify(testQueue), '{"size":0,"first":null,"last":null}')
 });
 
 test('Queue.enqueue()', t => {
   var testQueue = new Queue();
   testQueue.enqueue('Just added me 👍🏼');
-  t.is(JSON.stringify(testQueue), '{"length":1,"first":{"data":"Just added me 👍🏼","next":null},"last":{"data":"Just added me 👍🏼","next":null}}');
+  t.is(JSON.stringify(testQueue), '{"size":1,"first":{"data":"Just added me 👍🏼","next":null},"last":{"data":"Just added me 👍🏼","next":null}}');
 });
 
 test('Queue.enqueue() with existing elements', t => {
   var testQueue = new Queue();
   testQueue.enqueue('Old Last🏼');
   testQueue.enqueue('🏼New Last');
-  t.is(JSON.stringify(testQueue), '{"length":2,"first":{"data":"Old Last🏼","next":{"data":"🏼New Last","next":null}},"last":{"data":"Old Last🏼","next":{"data":"🏼New Last","next":null}}}');
+  t.is(JSON.stringify(testQueue), '{"size":2,"first":{"data":"Old Last🏼","next":{"data":"🏼New Last","next":null}},"last":{"data":"Old Last🏼","next":{"data":"🏼New Last","next":null}}}');
 });
 
 test('Queue.dequeue()', t => {
   var testQueue = new Queue();
   testQueue.enqueue('Just added me 👍🏼');
   testQueue.dequeue();
-  t.is(JSON.stringify(testQueue), '{"length":0,"first":null,"last":null}');
+  t.is(JSON.stringify(testQueue), '{"size":0,"first":null,"last":null}');
 });
 
 test('Queue.dequeue()', t => {

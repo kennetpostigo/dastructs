@@ -1,4 +1,5 @@
 // @flow
+
 function djb2 (key) {
   return key.split('').reduce((acc, curr) => acc * 33 + curr.charCodeAt(0), 5381) % 1013;
 }
@@ -70,6 +71,7 @@ export class Map {
   }
 
   get (key: any): any {
+    // use hashed key and unhashed key
     return this.table[this.hashCode(key)] || undefined;
   }
 

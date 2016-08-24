@@ -13,14 +13,14 @@ class QueueNode {
 export class Queue {
   first: ?QueueNode;
   last: ?QueueNode;
-  length: number;
+  size: number;
   enqueue: Function;
   dequeue: Function;
   peek: Function;
   isEmpty: Function;
 
   constructor () {
-    this.length = 0;
+    this.size = 0;
     this.first = null,
     this.last = null
   }
@@ -29,11 +29,11 @@ export class Queue {
     var queueElement: QueueNode = new QueueNode(element);
     if (this.last) {
       this.last.next = queueElement;
-      this.length++;
+      this.size++;
       return;
     }
     this.last = queueElement;
-    this.length++;
+    this.size++;
     if (!this.first) {
       this.first = this.last;
     }
@@ -43,7 +43,7 @@ export class Queue {
     if (!this.first) return null;
     var temp = this.first.data;
     this.first = this.first.next;
-    this.length--;
+    this.size--;
     if(!this.first) this.last = null;
     return temp;
   }
@@ -54,6 +54,6 @@ export class Queue {
   }
 
   isEmpty () {
-    return this.length === 0;
+    return this.size === 0;
   }
 }
