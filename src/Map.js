@@ -1,27 +1,6 @@
 // @flow
-
-function makeCRCTable (): number[] {
-  var c;
-  var crcTable: number[] = [];
-  for(var n =0; n < 256; n++){
-    c = n;
-    for(var k =0; k < 8; k++){
-      c = ((c&1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1));
-    }
-    crcTable[n] = c;
-  }
-  return crcTable;
-}
-
-function crc32 (str: string): number {
-  var crcTable: number[] = makeCRCTable();
-  var crc: number = 0 ^ (-1);
-
-  for (var i = 0; i < str.length; i++ ) {
-    crc = (crc >>> 8) ^ crcTable[(crc ^ str.charCodeAt(i)) & 0xFF];
-  }
-
-  return (crc ^ (-1)) >>> 0;
+function djb2 (key) {
+  return key.split('').reduce((acc, curr) => acc * 33 + curr.charCodeAt(0), 5381) % 1013;
 }
 
 export class Map {
@@ -44,9 +23,9 @@ export class Map {
   hashCode (key: ?any): ?number {
     if (key) {
       if (typeof key === 'object') {
-        return crc32(JSON.stringify(key));
+        return djb2(JSON.stringify(key));
       }
-      return crc32(key.toString());
+      return djb2(key.toString());
     }
   }
 

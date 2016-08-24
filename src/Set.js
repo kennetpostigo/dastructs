@@ -73,15 +73,14 @@ export class Set {
     return new Set(setValues);
   }
 
-  // subset (setB: Set = new Set()): boolean {
-  //   if (this.size > setB.size) return false;
-  //   var a: any[] = this.values(),
-  //       b: any[] = setB.values(),
-  //       pointer: number = 0;
-  //       // console.log(`${a} - ${b}`);
-  //   while (pointer++ <= a.length) {
-  //     if (!b[a[pointer]]) return false;
-  //   }
-  //   return true;
-  // }
+  subset (setB: Set = new Set()): boolean {
+    if (this.size > setB.size) return false;
+    var a: any[] = this.values(),
+        pointer: number = 0;
+    while (pointer < a.length) {
+      if (!setB.has(a[pointer])) return false;
+      pointer++;
+    }
+    return true;
+  }
 }

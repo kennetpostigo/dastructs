@@ -235,3 +235,10 @@ test('BinarySearchTree.remove() with left child node', t => {
   testBinarySearchTree.insert(25);
   t.is(JSON.stringify(testBinarySearchTree.remove(3)), '{"key":11,"left":{"key":7,"left":{"key":2,"left":null,"right":null},"right":{"key":9,"left":{"key":8,"left":null,"right":null},"right":{"key":10,"left":null,"right":null}}},"right":{"key":15,"left":{"key":13,"left":null,"right":null},"right":{"key":20,"left":null,"right":{"key":25,"left":null,"right":null}}}}');
 });
+
+test('BinarySearchTree.__removeNode() with null', t => {
+  var testBinarySearchTree = new BinarySearchTree(5);
+  testBinarySearchTree.__removeNode(null, 5);
+
+  t.is(null, null);
+});

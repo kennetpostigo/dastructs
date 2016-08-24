@@ -9,12 +9,12 @@ test('Map', t => {
 test('Map.hashCode()', t => {
   var testMap = new Map();
   testMap.hashCode('Hello');
-  t.is(testMap.hashCode('Hello'), 4157704578);
+  t.is(testMap.hashCode('Hello'), 488);
 });
 
 test('Map.hashCode() with object', t => {
   var testMap = new Map();
-  t.is(testMap.hashCode({hi: 'Hello'}), 563081644);
+  t.is(testMap.hashCode({hi: 'Hello'}), 696);
 });
 
 test('Map.clear()', t => {
@@ -96,7 +96,7 @@ test('Map.keys()', t => {
   testMap.set('keyTwo', 2);
   testMap.set('keyThree', 3);
   testMap.set('keyFour', 4);
-  t.deepEqual(testMap.keys(), [695488530,1121082501,1546017827,2844904809]);
+  t.deepEqual(testMap.keys(), [649,323,720,576]);
 });
 
 test('Map.keys() with deleted key', t => {
@@ -106,5 +106,5 @@ test('Map.keys() with deleted key', t => {
   testMap.set('keyThree', 3);
   testMap.set('keyFour', 4);
   testMap.delete('keyOne');
-  t.deepEqual(testMap.keys(), [1121082501,1546017827,2844904809]);
+  t.deepEqual(testMap.keys(), [323,720,576]);
 });

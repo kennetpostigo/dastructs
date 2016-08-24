@@ -88,20 +88,20 @@ test('Set.difference()', t => {
   t.deepEqual(difference.values(), [2, 5]);
 });
 
-// test('Set.subset()', t => {
-//   var testSet = new Set([1, 2, 3]);
-//   var testSet2 = new Set([1, 2, 3, 4, 5, 6]);
-//   t.is(testSet.subset(testSet2), true);
-// });
-//
-// test('Set.subset() with smaller set', t => {
-//   var testSet = new Set([1,2,3]);
-//   var testSet2 = new Set([1]);
-//   t.is(testSet.subset(testSet2), false);
-// });
-//
-// test('Set.subset() with non subset', t => {
-//   var testSet = new Set([1, 2, 3]);
-//   var testSet2 = new Set([2, 4, 6, 8]);
-//   t.is(testSet.subset(testSet2), false);
-// });
+test('Set.subset()', t => {
+  var testSet = new Set([1, 2, 3]);
+  var testSet2 = new Set([1, 2, 3, 4, 5, 6]);
+  t.is(testSet.subset(testSet2), true);
+});
+
+test('Set.subset() with smaller set', t => {
+  var testSet = new Set([1,2,3]);
+  var testSet2 = new Set([1]);
+  t.is(testSet.subset(testSet2), false);
+});
+
+test('Set.subset() with non subset', t => {
+  var testSet = new Set([1, 2, 3]);
+  var testSet2 = new Set([2, 4, 6, 8]);
+  t.is(testSet.subset(testSet2), false);
+});
