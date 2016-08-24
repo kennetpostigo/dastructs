@@ -36,6 +36,14 @@ test('Map.get()', t => {
   t.is(testMap.get('keyTwo'), undefined);
 });
 
+test('Map.get() with a non-existant collision', t =>{
+  var testMap = new Map();
+  testMap.set('keyOne', 1);
+  testMap.set('^LFPMH^', 1);
+  testMap.set('DH', 2);
+  t.is(testMap.get('FGI'), undefined);
+})
+
 test('Map.has()', t => {
   var testMap = new Map();
   testMap.set('keyOne', 1);
@@ -46,6 +54,14 @@ test('Map.has() without existing key', t => {
   var testMap = new Map();
   t.is(testMap.has('keyOne'), false);
 });
+
+test('Map.has() with a non-existant collision', t =>{
+  var testMap = new Map();
+  testMap.set('keyOne', 1);
+  testMap.set('^LFPMH^', 1);
+  testMap.set('DH', 2);
+  t.is(testMap.has('FGI'), false);
+})
 
 test('Map.set()', t => {
   var testMap = new Map();
@@ -60,11 +76,35 @@ test('Map.set() with double', t => {
   t.is(testMap.size, 1);
 });
 
+test('Map.set() with a collision', t => {
+  var testMap = new Map();
+  testMap.set('^LFPMH^', 1);
+  testMap.set('DH', 2);
+  console.log(testMap.table[1007])
+  t.is(testMap.get('DH'), 2);
+});
+
 test('Map.delete()', t => {
   var testMap = new Map();
   testMap.set('keyOne', 1);
   t.is(testMap.delete('keyOne'), true);
 });
+
+test('Map.delete() with a collision', t => {
+  var testMap = new Map();
+  testMap.set('keyOne', 1);
+  testMap.set('^LFPMH^', 1);
+  testMap.set('DH', 2);
+  t.is(testMap.delete('DH'), true);
+});
+
+test('Map.delete() with a non-existant collision', t =>{
+  var testMap = new Map();
+  testMap.set('keyOne', 1);
+  testMap.set('^LFPMH^', 1);
+  testMap.set('DH', 2);
+  t.is(testMap.delete('FGI'), false);
+})
 
 test('Map.delete() without existing key', t => {
   var testMap = new Map();
@@ -88,6 +128,16 @@ test('Map.values() with deleted key', t => {
   testMap.set('keyFour', 4);
   testMap.delete('keyOne');
   t.deepEqual(testMap.values(), [2,3,4]);
+});
+
+test('Map.values() with collision keys', t => {
+  var testMap = new Map();
+  testMap.set('keyTwo', 2);
+  testMap.set('^LFPMH^', 1);
+  testMap.set('DH', 2);
+  testMap.set('keyThree', 3);
+  testMap.set('keyFour', 4);
+  t.deepEqual(testMap.values(), [2,1,2,3,4]);
 });
 
 test('Map.keys()', t => {
