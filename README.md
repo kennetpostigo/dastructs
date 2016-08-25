@@ -13,29 +13,39 @@
 
 Dastructs is a neat dependency-free library packed with novelty data structures
 and polymorphic functions that operate on them. Dastructs is short for (Da)ta
-(Struct)ures. I made this library to gain a deeper understanding of Data Structures
-and Algorithms. In the future I plan to also add immutable Data Structures to this
-package or create another package for immutable data structures once I finish reading
-a few books on the subject.
+(Struct)ures. Aside from it being a library that you can use to model data in your
+applications with it is also a source for people interested in learning about
+data structures in a friendly language like javascript.
 
-This library is under construction and will take sometime to finish, but hopefully
-if your into data structures you find these to be pretty awesome to work with.
-I will try to make the code easy to follow and understand and try to setup a documentation
-site that contains examples and explanations.
+## Goal
+Dastructs is currently at an early stage. All data structures are implemented with
+the minimal amount of functionality. I will be working on adding more functionality
+while also trying to prevent as much bloat as possible.
+
+There are a few critical steps I want to take to help make data structures approachable
+for people without a Computer Science Degree:
++ [ ] __Create a github page for the library that details the use case for each data structure and their methods__
+
++ [ ] __Provide explanations of the source of the data structures in a section of the github page__
+
++ [ ] __Provide resources for further exploration of data structures__
 
 
-## Data Structures to be included:
- + Stack
- + Queue
- + PriorityQueue
+## Data Structures included:
+ + AVL Tree
+ + Binary Search Tree
+ + Binary Tree
+ + Dictionary
+ + Graph
  + LinkedList
  + Map
- + Set
+ + PriorityQueue
+ + Queue
+ + Red Black Tree
  + Seq
- + Dictionary
+ + Set
+ + Stack
  + Trie
- + BinarySearchTree
- + Graph
 
 ## Contributing
 If you are willing to help make the data structures better and want to contribute
