@@ -80,7 +80,6 @@ test('Map.set() with a collision', t => {
   var testMap = new Map();
   testMap.set('^LFPMH^', 1);
   testMap.set('DH', 2);
-  console.log(testMap.table[1007])
   t.is(testMap.get('DH'), 2);
 });
 

@@ -1,25 +1,26 @@
+import { AVLTree } from './AVLTree';
 import { BinarySearchTree } from './BinarySearchTree';
-import { Dictionary } from './Dictionary';
+import { BinaryTree } from './BinaryTree';
 import { LinkedList } from './LinkedList';
 import { Map } from './Map';
-import { OrderedMap } from './OrderedMap';
-import { OrderedSet } from './OrderedSet';
 import { PriorityQueue } from './PriorityQueue';
 import { Queue } from './Queue';
+import { RedBlackTree } from './RedBlackTree';
 import { Seq } from './Seq';
 import { Set } from './Set';
 import { Stack } from './Stack';
 import { Trie } from './Trie';
 
 export {
+  AVLTree,
   BinarySearchTree,
-  Dictionary,
+  BinaryTree,
+  Graph,
   LinkedList,
   Map,
-  OrderedMap,
-  OrderedSet,
   PriorityQueue,
   Queue,
+  RedBlackTree,
   Seq,
   Set,
   Stack,

@@ -35,7 +35,6 @@ for people without a Computer Science Degree:
  + AVL Tree
  + Binary Search Tree
  + Binary Tree
- + Dictionary
  + Graph
  + LinkedList
  + Map
